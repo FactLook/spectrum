@@ -28,6 +28,7 @@
         hide: noop,
 
         // Options
+        ignoreClickOutEvent : false,
         color: false,
         flat: false,
         showInput: false,
@@ -628,7 +629,12 @@
             visible = true;
 
             $(doc).on("keydown.spectrum", onkeydown);
-            $(doc).on("click.spectrum", clickout);
+            
+            if(!opts.ignoreClickOutEvent)
+            {
+               $(doc).on("click.spectrum", clickout);
+            }
+
             $(window).on("resize.spectrum", resize);
             replacer.addClass("sp-active");
             container.removeClass("sp-hidden");
